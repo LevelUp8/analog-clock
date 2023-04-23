@@ -1,0 +1,19 @@
+/** clock.css (place input same directory as Clock.java and ensure build script copies the file to the same location as Clock.class) */
+
+#hourHand {
+  -fx-stroke: darkslategray;
+  -fx-stroke-width: 4;
+  -fx-stroke-line-cap: round;
+}
+
+#minuteHand {
+  -fx-stroke: derive(darkslategray, -5%);
+  -fx-stroke-width: 3;
+  -fx-stroke-line-cap: round;
+}
+
+#secondHand {
+  -fx-stroke: derive(firebrick, -15%);
+  -fx-stroke-width: 2;
+  -fx-stroke-line-cap: round;
+}
