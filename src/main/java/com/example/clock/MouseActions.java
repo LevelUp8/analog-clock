@@ -14,7 +14,8 @@ import java.util.prefs.*;
 public class MouseActions {
 
     // Retrieve the user preference node for the package com.example.clock
-    private static final Preferences prefs = Preferences.userNodeForPackage(com.example.clock.MouseActions.class);
+    private static final Preferences prefs =
+            Preferences.userNodeForPackage(com.example.clock.MouseActions.class);
 
     // Preference key name
     private static final String PREF_NAME = "clock_face";
@@ -23,14 +24,29 @@ public class MouseActions {
 
     public void init(Stage stage, Scene scene, VBox layout) {
 
-        Image clockImg1 = new Image(HelloApplication.class.getResource("1.png").toString(), 200, 200, true, true);
-        BackgroundImage backgroundImage1 = new BackgroundImage(clockImg1, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        Image clockImg1 =
+                new Image(Main.class.getResource("1.png").toString(), 200, 200, true, true);
+        BackgroundImage backgroundImage1 = new BackgroundImage(clockImg1,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT);
 
-        Image clockImg2 = new Image(HelloApplication.class.getResource("2.png").toString(), 200, 200, true, true);
-        BackgroundImage backgroundImage2 = new BackgroundImage(clockImg2, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        Image clockImg2 =
+                new Image(Main.class.getResource("2.png").toString(), 200, 200, true, true);
+        BackgroundImage backgroundImage2 = new BackgroundImage(clockImg2,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT);
 
-        Image clockImg3 = new Image(HelloApplication.class.getResource("3.png").toString(), 200, 200, true, true);
-        BackgroundImage backgroundImage3 = new BackgroundImage(clockImg3, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        Image clockImg3 =
+                new Image(Main.class.getResource("3.png").toString(), 200, 200, true, true);
+        BackgroundImage backgroundImage3 = new BackgroundImage(clockImg3,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT);
 
         extracted(layout, backgroundImage1, backgroundImage2, backgroundImage3);
 
@@ -60,7 +76,10 @@ public class MouseActions {
         });
     }
 
-    private void extracted(VBox layout, BackgroundImage backgroundImage1, BackgroundImage backgroundImage2, BackgroundImage backgroundImage3) {
+    private void extracted(VBox layout,
+                           BackgroundImage backgroundImage1,
+                           BackgroundImage backgroundImage2,
+                           BackgroundImage backgroundImage3) {
         Integer clockFace = getUserSettings();
         switch (clockFace) {
             case 1 -> layout.setBackground(new Background(backgroundImage1));
@@ -71,14 +90,12 @@ public class MouseActions {
     }
 
 
-    private void saveUserSettings(Integer number)
-    {
+    private void saveUserSettings(Integer number) {
         // Set the value of the preference
         prefs.put(PREF_NAME, number.toString());
     }
 
-    private Integer getUserSettings()
-    {
+    private Integer getUserSettings() {
         // Get the value of the preference;
         // default value is returned if the preference does not exist
         String defaultValue = "1";

@@ -12,9 +12,12 @@ public class HandTransitions {
     public static void create(Line hourHand, Line minuteHand, Line secondHand) {
         // determine the starting time.
         LocalDateTime localDateTime = LocalDateTime.now();
+
         final double seedSecondDegrees = localDateTime.getSecond() * (360.0 / 60);
-        final double seedMinuteDegrees = (localDateTime.getMinute() + seedSecondDegrees / 360.0) * (360.0 / 60);
-        final double seedHourDegrees = (localDateTime.getHour() + seedMinuteDegrees / 360.0) * (360.0 / 12);
+        final double seedMinuteDegrees =
+                (localDateTime.getMinute() + seedSecondDegrees / 360.0) * (360.0 / 60);
+        final double seedHourDegrees =
+                (localDateTime.getHour() + seedMinuteDegrees / 360.0) * (360.0 / 12);
 
         // define rotations to map the analogueClock to the current time.
         final Rotate hourRotate = new Rotate(seedHourDegrees);
@@ -60,12 +63,11 @@ public class HandTransitions {
                 )
         );
 
-        // time never ends.
+        // animation of time never ends.
         hourTime.setCycleCount(Animation.INDEFINITE);
         minuteTime.setCycleCount(Animation.INDEFINITE);
         secondTime.setCycleCount(Animation.INDEFINITE);
 
-        // start the analogueClock.
         secondTime.play();
         minuteTime.play();
         hourTime.play();

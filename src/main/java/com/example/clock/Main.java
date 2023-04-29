@@ -12,7 +12,7 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -21,7 +21,6 @@ public class HelloApplication extends Application {
     public void start(final Stage stage) {
         // construct the analogueClock pieces.
         final Circle face = new Circle(100, 100, 100);
-        //face.setId("face");
         final Line hourHand = new Line(0, 0, 0, -50);
         hourHand.setTranslateX(100);
         hourHand.setTranslateY(100);
@@ -48,14 +47,17 @@ public class HelloApplication extends Application {
         layout.setAlignment(Pos.CENTER);
         layout.setMinSize(300, 300);
         final Scene scene = new Scene(layout, Color.TRANSPARENT);
-        // scene.getStylesheets().add(getResource("clock.css"));
-        scene.getStylesheets().add(HelloApplication.class.getResource("clock.css").toString());
+        scene.getStylesheets()
+                .add(Main.class.getResource("clock.css").toString());
         stage.setScene(scene);
 
+        // Add mouse actions. Drag and drop and style change of double click
         MouseActions mouseActions = new MouseActions();
         mouseActions.init(stage, scene, layout);
 
-        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("icon.png")));
+        // Get the application icon
+        stage.getIcons()
+                .add(new Image(Main.class.getResourceAsStream("icon.png")));
         // show the scene.
         stage.show();
     }
